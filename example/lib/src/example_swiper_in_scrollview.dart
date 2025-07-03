@@ -216,7 +216,8 @@ class _ExampleState extends State<ExampleSwiperInScrollView>
                                   alignment: FractionalOffset.topLeft,
                                   decoration: BoxDecoration(
                                     border: Border.all(
-                                      color: Colors.lightBlue.withOpacity(0.5),
+                                      color: Colors.lightBlue
+                                          .withValues(alpha: 0.5),
                                       width: 100.0,
                                     ),
                                     shape: BoxShape.circle,

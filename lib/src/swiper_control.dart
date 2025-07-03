@@ -49,15 +49,17 @@ class SwiperControl extends SwiperPlugin {
         }
       },
       child: Padding(
-          padding: padding,
-          child: RotatedBox(
-              quarterTurns: quarterTurns,
-              child: Icon(
-                iconDaga,
-                semanticLabel: previous ? 'Previous' : 'Next',
-                size: size,
-                color: color,
-              ))),
+        padding: padding,
+        child: RotatedBox(
+          quarterTurns: quarterTurns,
+          child: Icon(
+            iconDaga,
+            semanticLabel: previous ? 'Previous' : 'Next',
+            size: size,
+            color: color,
+          ),
+        ),
+      ),
     );
   }
 
@@ -98,7 +100,7 @@ class SwiperControl extends SwiperPlugin {
             iconDaga: iconNext,
             quarterTurns: 0,
             previous: false,
-          )
+          ),
         ],
       );
     } else {
@@ -119,7 +121,7 @@ class SwiperControl extends SwiperPlugin {
             iconDaga: iconNext,
             quarterTurns: -3,
             previous: false,
-          )
+          ),
         ],
       );
     }

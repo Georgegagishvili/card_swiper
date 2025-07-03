@@ -1,8 +1,8 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 
-import 'config.dart';
-import 'forms/form_widget.dart';
+import 'package:example/src/config.dart';
+import 'package:example/src/forms/form_widget.dart';
 
 class ExampleCustom extends StatefulWidget {
   const ExampleCustom({Key? key}) : super(key: key);

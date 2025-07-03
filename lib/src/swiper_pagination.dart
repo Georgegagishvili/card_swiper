@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../card_swiper.dart';
+import 'package:card_swiper/card_swiper.dart';
 
 class FractionPaginationBuilder extends SwiperPlugin {
   ///color ,if set null , will be Theme.of(context).scaffoldBackgroundColor

@@ -3,9 +3,9 @@ import 'dart:ui';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 
-import 'src/config.dart';
-import 'src/example_custom.dart';
-import 'src/example_swiper_in_scrollview.dart';
+import 'package:example/src/config.dart';
+import 'package:example/src/example_custom.dart';
+import 'package:example/src/example_swiper_in_scrollview.dart';
 
 void main() => runApp(const MyApp());
 
@@ -35,12 +35,12 @@ class MyApp extends StatelessWidget {
         '/example04': (context) => const ExampleCustomPagination(),
         '/example05': (context) => const ExamplePhone(),
         '/example06': (context) => const ScaffoldWidget(
-              child: ExampleSwiperInScrollView(),
               title: 'ScrollView',
+              child: ExampleSwiperInScrollView(),
             ),
         '/example07': (context) => const ScaffoldWidget(
-              child: ExampleCustom(),
               title: 'Custom All',
+              child: ExampleCustom(),
             )
       },
     );
@@ -48,15 +48,15 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({required this.title, Key? key}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  MyHomePageState createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePageState extends State<MyHomePage> {
   List<Widget> render(BuildContext context, List<List<String>> children) {
     return ListTile.divideTiles(
       context: context,
@@ -235,6 +235,7 @@ class ExampleCustomPagination extends StatelessWidget {
                     margin: EdgeInsets.zero,
                     builder: SwiperCustomPagination(builder: (context, config) {
                       return ConstrainedBox(
+                        constraints: const BoxConstraints.expand(height: 50.0),
                         child: Container(
                           color: Colors.white,
                           child: Text(
@@ -242,7 +243,6 @@ class ExampleCustomPagination extends StatelessWidget {
                             style: const TextStyle(fontSize: 20.0),
                           ),
                         ),
-                        constraints: const BoxConstraints.expand(height: 50.0),
                       );
                     })),
                 control: const SwiperControl(),
@@ -262,6 +262,7 @@ class ExampleCustomPagination extends StatelessWidget {
                     margin: EdgeInsets.zero,
                     builder: SwiperCustomPagination(builder: (context, config) {
                       return ConstrainedBox(
+                        constraints: const BoxConstraints.expand(height: 50.0),
                         child: Row(
                           children: <Widget>[
                             Text(
@@ -281,7 +282,6 @@ class ExampleCustomPagination extends StatelessWidget {
                             )
                           ],
                         ),
-                        constraints: const BoxConstraints.expand(height: 50.0),
                       );
                     })),
                 control: const SwiperControl(color: Colors.redAccent),
@@ -343,9 +343,9 @@ class ScaffoldWidget extends StatelessWidget {
   final List<Widget>? actions;
 
   const ScaffoldWidget({
-    Key? key,
     required this.title,
     required this.child,
+    Key? key,
     this.actions,
   }) : super(key: key);
 

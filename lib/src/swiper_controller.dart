@@ -1,27 +1,27 @@
-import 'swiper_plugin.dart';
-import 'transformer_page_view/index_controller.dart';
+import 'package:card_swiper/src/swiper_plugin.dart';
+import 'package:card_swiper/src/transformer_page_view/index_controller.dart';
 
 class SwipeIndexControllerEvent extends IndexControllerEventBase {
   SwipeIndexControllerEvent({
     required this.pos,
-    required bool animation,
-  }) : super(animation: animation);
+    required super.animation,
+  });
   final double pos;
 }
 
 class BuildIndexControllerEvent extends IndexControllerEventBase {
   BuildIndexControllerEvent({
-    required bool animation,
+    required super.animation,
     required this.config,
-  }) : super(animation: animation);
+  });
   final SwiperPluginConfig config;
 }
 
 class AutoPlaySwiperControllerEvent extends IndexControllerEventBase {
   AutoPlaySwiperControllerEvent({
-    required bool animation,
+    required super.animation,
     required this.autoplay,
-  }) : super(animation: animation);
+  });
 
   AutoPlaySwiperControllerEvent.start({
     required bool animation,

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'transformer_page_view.dart';
+import 'package:card_swiper/src/transformer_page_view/transformer_page_view.dart';
 
 typedef PaintCallback = Function(Canvas canvas, Size size);
 
@@ -24,10 +24,11 @@ class ColorPainter extends CustomPainter {
     final position = info.position;
     if (info.forward!) {
       if (index < colors.length - 1) {
-        color = colors[index + 1].value & 0x00ffffff;
-        opacity = (position! <= 0
-            ? (-position / info.viewportFraction!)
-            : 1 - position / info.viewportFraction!);
+        color = colors[index + 1].toARGB32() & 0x00ffffff;
+        opacity =
+            (position! <= 0
+                ? (-position / info.viewportFraction!)
+                : 1 - position / info.viewportFraction!);
         if (opacity > 1) {
           opacity -= 1.0;
         }
@@ -38,14 +39,17 @@ class ColorPainter extends CustomPainter {
 
         _paint.color = Color((alpha << 24) | color);
         canvas.drawRect(
-            Rect.fromLTWH(0.0, 0.0, size.width, size.height), _paint);
+          Rect.fromLTWH(0.0, 0.0, size.width, size.height),
+          _paint,
+        );
       }
     } else {
       if (index > 0) {
-        color = colors[index - 1].value & 0x00ffffff;
-        opacity = (position! > 0
-            ? position / info.viewportFraction!
-            : (1 + position / info.viewportFraction!));
+        color = colors[index - 1].toARGB32() & 0x00ffffff;
+        opacity =
+            (position! > 0
+                ? position / info.viewportFraction!
+                : (1 + position / info.viewportFraction!));
         if (opacity > 1) {
           opacity -= 1.0;
         }
@@ -56,7 +60,9 @@ class ColorPainter extends CustomPainter {
 
         _paint.color = Color((alpha << 24) | color);
         canvas.drawRect(
-            Rect.fromLTWH(0.0, 0.0, size.width, size.height), _paint);
+          Rect.fromLTWH(0.0, 0.0, size.width, size.height),
+          _paint,
+        );
       }
     }
   }
@@ -87,11 +93,11 @@ class ParallaxColor extends StatefulWidget {
   final TransformInfo info;
 
   const ParallaxColor({
-    Key? key,
     required this.child,
     required this.colors,
     required this.info,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<StatefulWidget> createState() {
@@ -106,12 +112,12 @@ class ParallaxContainer extends StatelessWidget {
   final double opacityFactor;
 
   const ParallaxContainer({
-    Key? key,
     required this.child,
     required this.position,
+    super.key,
     this.translationFactor = 100.0,
     this.opacityFactor = 1.0,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -131,18 +137,14 @@ class ParallaxImage extends StatelessWidget {
 
   ParallaxImage.asset(
     String name, {
-    Key? key,
     required double position,
+    super.key,
     this.imageFactor = 0.3,
-  })  : image = Image.asset(
-          name,
-          fit: BoxFit.cover,
-          alignment: FractionalOffset(
-            0.5 + position * imageFactor,
-            0.5,
-          ),
-        ),
-        super(key: key);
+  }) : image = Image.asset(
+         name,
+         fit: BoxFit.cover,
+         alignment: FractionalOffset(0.5 + position * imageFactor, 0.5),
+       );
 
   @override
   Widget build(BuildContext context) {

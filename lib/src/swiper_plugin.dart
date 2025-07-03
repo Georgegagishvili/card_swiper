@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import '../card_swiper.dart';
+import 'package:card_swiper/card_swiper.dart';
 
 /// plugin to display swiper components
 ///
@@ -40,10 +40,10 @@ class SwiperPluginView extends StatelessWidget {
   final SwiperPluginConfig config;
 
   const SwiperPluginView({
-    Key? key,
     required this.plugin,
     required this.config,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

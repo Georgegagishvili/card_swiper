@@ -50,6 +50,7 @@ class _InnerSwiperState extends State<InnerSwiper> {
           return Column(
             children: <Widget>[
               SizedBox(
+                height: 300.0,
                 child: Swiper(
                   controller: controllers[index],
                   pagination: const SwiperPagination(),
@@ -62,7 +63,6 @@ class _InnerSwiperState extends State<InnerSwiper> {
                   },
                   autoplay: autoPlayer[index],
                 ),
-                height: 300.0,
               ),
               ElevatedButton(
                 onPressed: () {

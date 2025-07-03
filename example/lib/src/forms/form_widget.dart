@@ -7,9 +7,9 @@ class FormWidget extends StatelessWidget {
   final Widget child;
 
   const FormWidget({
-    Key? key,
     required this.label,
     required this.child,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -38,11 +38,11 @@ class FormSelect<T> extends StatefulWidget {
   final T value;
 
   const FormSelect({
-    Key? key,
     required this.placeholder,
     required this.valueChanged,
     required this.value,
     required this.values,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -76,7 +76,7 @@ class _FormSelectState<T> extends State<FormSelect<T>> {
           _selectedIndex < 0 ? placeholder : values[_selectedIndex].toString()),
       onTap: () {
         _selectedIndex = 0;
-        showBottomSheet<dynamic>(
+        showBottomSheet(
             context: context,
             builder: (context) {
               return SizedBox(
@@ -129,12 +129,12 @@ class NumberPad extends StatelessWidget {
   final ValueChanged<num> onChangeValue;
 
   const NumberPad({
-    Key? key,
     required this.number,
     required this.step,
     required this.onChangeValue,
     required this.max,
     required this.min,
+    Key? key,
   }) : super(key: key);
 
   void onAdd() {
